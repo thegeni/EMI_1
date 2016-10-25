@@ -56,34 +56,23 @@ public class DigitSumActivity extends AppCompatActivity {
     /**
      * Trigger the Digit Sum Calculation
      */
-    private void CalculateDigitSum() {
-        /*
-         *
-         *  TODO: IMPLEMENT THIS
-         *  NUMBER 3: CALCULATE AND PRINT DIGIT SUM
-         *
-         *
-         */
+    private int getDigitSum(int i) {
 
-        /*
-         * a) Get entered number
-         */
-        try{
+        if(i < 10) {return i;}
+        return (i%10) + getDigitSum(i/10);
+
+    }
+
+
+    private void CalculateDigitSum() {
+
+        try {
             int i = Integer.parseInt(etNumber.getText().toString());
             i = getDigitSum(i);
 
-
-
-        /*
-         * b) Calculate digit sum
-         *    (Hint: This can be done recursively using an additional function/method
-         *    private int getDigitSum(int n))
-         */
-
-        /*
-         * c) Print result
-         */
-
+            tvOutput.setText(Integer.toString(i));
+        } catch (NumberFormatException e) {
+            tvOutput.setText("Die Eingabe ist keine Zahl!");
         }
-
+    }
 }
